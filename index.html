@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="style.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        <title>Pig Game</title>
+    </head>
+        <!-- GAME RULES for game 1 -->
+        <!-- <div class="container">
+                <p style="text-align: center">
+                    <a class="btn btn-danger col-sm-4"data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><b>GAME RULES</b></a>
+                </p>
+                
+                <div class="row">
+                    <div class="col">
+                      <div class="collapse multi-collapse" id="multiCollapseExample1">
+                        <div class="card card-body font-weight-bold">
+                                The game has 2 players, playing in rounds. In each turn, a player rolls a dice as many times as he wishes. Each result gets added to his CURRENT score.
+                                But, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn.
+                                The player can choose to HOLD, which means that his CURRENT score gets added to his GLOBAL score. After that, it's the next player's turn.
+                                The first player to reach 50 points on GLOBAL score wins the game.
+                        </div>
+                      </div>
+                    </div>
+                </div>
+        </div> -->
+
+        <!-- GAME RULES for game 2 -->
+        <div class="container">
+                <p style="text-align: center">
+                    <a class="btn btn-danger col-sm-4" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><b>GAME RULES</b></a>
+                </p>
+                
+                <div class="row">
+                    <div class="col">
+                      <div class="collapse multi-collapse" id="multiCollapseExample1">
+                        <div class="card card-body font-weight-bold">
+                                The game has 2 players, playing in rounds. In each turn, a player rolls dices as many times as he wishes. Each result gets added to his CURRENT score.
+                                But, if the player rolls a 1, all his ROUND score gets lost. And if he rolls two 6's in a row, he looses his ENTIRE score. In each way, after that, it's the next player's turn.
+                                The player can also always choose to HOLD, which means that his CURRENT score gets added to his GLOBAL score but it's the next player's turn.
+                                The first player to reach 50 points on GLOBAL score wins the game (you can change the score to whichever you wish in the bracket 'FINAL SCORE' bellow).
+                        </div>
+                      </div>
+                    </div>
+                </div>
+        </div>
+
+
+        <body style="background-image: url(images/back3.jpg)">
+
+        <br>
+        <br>
+        <br>
+
+        <div class="wrapper clearfix">
+
+            <div class="player-0-panel active">
+                <div class="player-name" id="name-0">Player 1</div>
+                <div class="player-score" id="score-0">0</div>
+                <div class="player-current-box">
+                    <div class="player-current-label">Current</div>
+                    <div class="player-current-score" id="current-0">0</div>
+                </div>
+            </div>
+
+            <div class="player-1-panel">
+                <div class="player-name" id="name-1">Player 2</div>
+                <div class="player-score" id="score-1">0</div>
+                <div class="player-current-box">
+                    <div class="player-current-label">Current</div>
+                    <div class="player-current-score" id="current-1">0</div>
+                </div>
+            </div>
+
+            <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+            <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
+            <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+
+            <!-- game 2 addition (giving option to change the winning score)-->
+            <input type="text" placeholder="Final score" class="final-score">
+
+            <img src="images/dice-5.png" alt="Dice" class="dice" id="dice-1">
+
+            <!-- game 2 addition (adding second dice) -->
+            <img src="images/dice-4.png" alt="Dice" class="dice" id="dice-2">
+
+        </div>
+        <!-- /. wrapper clearfix -->
+
+
+    </body>
+
+
+        <!-- <script src="game1.js"></script> -->
+        <script src="game2.js"></script>
+            <!-- IF U WANT TO TRY THE GAME WITH DIFFERENT RULES, UNCOMMENT LINE 93 AND  84 AND COMMENT-OUT LINE 92 (ONE BEFORE) OR VICE VERSA -->
+
+
+</html>
