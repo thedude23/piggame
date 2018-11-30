@@ -82,15 +82,15 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         
         //3. we make an option to change the winning score
         var input = document.querySelector('.final-score').value; //'.value' lets user to select value (****)
-        var winningScore;   //we need this variable in order to select what the winningScore will be -- either (a) user's value or (b) pre-set 30
+        var winningScore;   //we need this variable in order to select what the winningScore will be -- either (a) user's value or (b) pre-set 20
                                 // Undefined, 0, null or "" are COERCED to false
                                 // Anything else is COERCED to true
         
         if (input) { //if input is selected, then winningScore should be the one user selects it
             winningScore = input;
 
-        } else { //else the winningScore should be set to 30
-            winningScore = 30;
+        } else { //else the winningScore should be set to 20
+            winningScore = 20; //NOT WORKING ?!!?!?
         }
         
         //4. we check if player won the game or not and do some things if he/she did (not)
