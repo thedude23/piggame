@@ -1,20 +1,21 @@
-var scores, roundScore, activePlayer, gamePlaying; //at the beginning we always write which variables that will be needed
+var scores, roundScore, activePlayer, gamePlaying; //at the beginning we always write the variables needed for later; 
+                                                   // we can define them later
 
+$('.btn btn-danger').hide('wrapper clearfix'); // **********
 
 init(); //0. we start the game (we could also name this function "startGame" or something)
 
 
-//1. when game starts
+//1. when game starts, we want the following things:
 function init() {
-    scores = [0, 0];
-    activePlayer = 0;
-    roundScore = 0;
-    gamePlaying = true;
+    scores = [0, 0]; //scores of both players to be 0
+    activePlayer = 0; //activePlayer to be the left player
+    roundScore = 0; //roundScore to be 0
+    gamePlaying = true; //gamePlaying to be happening (we set this because at some point we also want gamePlaying to be false)
     
     document.querySelector('.dice').style.display = 'none';
     document.getElementById('score-0').textContent = '0';
-        //the alternative:
-        // document.querySelector('#score-0').textContent = '0';
+    // document.querySelector('#score-0').textContent = '0'; //the alternative with querySelector
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
@@ -30,7 +31,8 @@ function init() {
 
 //2. when we click button 'NEW GAME', we call the function "init"
 document.querySelector('.btn-new').addEventListener('click', init); 
-
+// $('.btn-new').addEventListener('click', init); //the jQuery way
+ 
 
 //3. when we click button 'ROLL DICE'
 document.querySelector('.btn-roll').addEventListener('click', function() {
@@ -40,8 +42,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
         //2. we display the dice + correct dice.png (****)
         var diceDOM = document.querySelector('.dice');
-        diceDOM.style.display = 'block'; //that way dice shows on the screen
-        diceDOM.src = 'images/dice-' + dice + '.png'; ///we're gonna see the dice that presents a random number (defined in 3.1. (1.))
+        diceDOM.style.display = 'block'; //the dice shows on the screen
+        diceDOM.src = 'images/dice-' + dice + '.png'; ///we're gonna see the dice that presents a random number (defined in 3.1.)
 
         //3. we update the round score IF the rolled number was NOT a 1 (if it was, we switch players)
         if (dice !== 1) {
@@ -57,8 +59,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 //4. when we click button 'HOLD'
 document.querySelector('.btn-hold').addEventListener('click', function() {
     if (gamePlaying) {
-        //1. we add current score to global score (****)
-        scores[activePlayer] += roundScore;
+        //1. we add current score to global score (**HARDER TO UNDERSTAND**)
+        scores[activePlayer] += roundScore; //the alternative: scores[activePlayer] = scores[activePlayer] + roundScore;
 
         //2. we make updated score visible
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];

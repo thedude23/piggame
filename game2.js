@@ -1,5 +1,6 @@
-var scores, roundScore, activePlayer, gamePlaying; //at the beginning we always write which variables that will be needed
-var lastDice; //we add this so we can check the last dices' numbers //lastDice is defined later
+var scores, roundScore, activePlayer, gamePlaying; //at the beginning we always write the variables needed for later; 
+                                                   // we can define them later
+var lastDice; //we also add this so we can check the last dices' numbers -- defined later (line 68)
 
 
 init(); //0. we start the game (we could also name this function "startGame" or something)
@@ -45,27 +46,17 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         document.getElementById('dice-2').style.display = 'block';
         document.getElementById('dice-1').src = 'images/dice-' + dice1 + '.png';
         document.getElementById('dice-2').src = 'images/dice-' + dice2 + '.png';
-
-        //3. Update the round score IF the rolled numbers were NOT a 1
-        /*if (dice1 !== 1 && dice2 !== 1) { 
-            //Add CURRENT score
-            roundScore += dice1 + dice2; //we need to add the second dice in the score counting
-            document.querySelector('#current-' + activePlayer).textContent = roundScore;
-        } else {
-            //Next player
-            nextPlayer();
-        }*/
-        
-        //3. we update the round score
-        if (dice1 === 6 || dice2 === 6 && lastDice === 6) { //if two 6 in a row
+            
+        //3. we update the scores
+        if (dice1 === 6 || dice2 === 6 && lastDice === 6) { //IF two 6's were thrown in a row, player loses all score
             //1. player looses his entire score
             scores[activePlayer] = 0; 
             document.querySelector('#score-' + activePlayer).textContent = '0'; //GLOBAL score goes back to 0
-            
+                
             //2. we switch players
             nextPlayer();
-        
-        } else if (dice1 !== 1 && dice2 !== 1) { //if no 1
+            
+        } else if (dice1 !== 1 && dice2 !== 1) { //IF the rolled numbers were NOT 1, we add roundScore
             //1. we add score
             roundScore += dice1 + dice2;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
@@ -74,7 +65,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             nextPlayer();
         }
 
-        lastDice = dice1 && dice2; //lastDice are dice1 and dice2
+        lastDice = dice1 && dice2; //lastDice are, ofc, both dices -- dice1 and dice2
         
     }    
 });
@@ -84,22 +75,22 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 document.querySelector('.btn-hold').addEventListener('click', function() {
     if (gamePlaying) {
         //1. we add current score to global score (****)
-        scores[activePlayer] += roundScore;
+        scores[activePlayer] += roundScore; //the alternative: scores[activePlayer] = scores[activePlayer] + roundScore;
 
         //2. we make updated score visible
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
         
         //3. we make an option to change the winning score
         var input = document.querySelector('.final-score').value; //'.value' lets user to select value (****)
-        var winningScore;   //we need this variable in order to select what the winningScore will be -- (a) user's value or (b) pre-set 50
-                            // Undefined, 0, null or "" are COERCED to false
-                            // Anything else is COERCED to true
+        var winningScore;   //we need this variable in order to select what the winningScore will be -- either (a) user's value or (b) pre-set 30
+                                // Undefined, 0, null or "" are COERCED to false
+                                // Anything else is COERCED to true
         
         if (input) { //if input is selected, then winningScore should be the one user selects it
             winningScore = input;
 
-        } else { //else the winningScore should be set to 50
-            winningScore = 50;
+        } else { //else the winningScore should be set to 30
+            winningScore = 30;
         }
         
         //4. we check if player won the game or not and do some things if he/she did (not)
@@ -120,14 +111,14 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 
 //5. when we switch players
 function nextPlayer() {
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; //we switch players
     roundScore = 0; //roundscore gets set to 0
 
     document.getElementById('current-0').textContent = '0'; //current score for player 1 gets set to 0
-    document.getElementById('current-1').textContent = '0'; //the same applies for player 2
+    document.getElementById('current-1').textContent = '0'; //the same logic applies for player 2
 
     document.querySelector('.player-0-panel').classList.toggle('active'); //we toggle player's panel as active
-    document.querySelector('.player-1-panel').classList.toggle('active'); //the same applies for the other player
+    document.querySelector('.player-1-panel').classList.toggle('active'); //the same logic applies for the other player
 
     document.getElementById('dice-1').style.display = 'none'; //we hide dice 1
     document.getElementById('dice-2').style.display = 'none'; //we hide dice 2

@@ -171,5 +171,5 @@ i {
     .winner { background-color: #f7f7f7; }
     .winner .player-name { font-weight: 300; color: #EB4D4D; }
 
-    .active { background-color: #f7f7f7; }
+    .active { background-color: #f7f7f7; } /* !!! */
     .active .player-name { font-weight: 300; }
