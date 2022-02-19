@@ -1,17 +1,16 @@
-var scores, roundScore, activePlayer, gamePlaying; //at the beginning we always write the variables needed for later; 
-                                                   // we can define them later
+var scores, roundScore, activePlayer, gamePlaying; //at the beginning we always write the variables needed for later; we can define them later
 
 $('.btn btn-danger').hide('wrapper clearfix'); // **********
 
-init(); //0. we start the game (we could also name this function "startGame" or something)
+init(); // 0. we start the game (we could also name this function "startGame" or something)
 
 
-//1. when game starts, we want the following things:
+// 1. when game starts, we want the following things:
 function init() {
-    scores = [0, 0]; //scores of both players to be 0
-    activePlayer = 0; //activePlayer to be the left player
-    roundScore = 0; //roundScore to be 0
-    gamePlaying = true; //gamePlaying to be happening (we set this because at some point we also want gamePlaying to be false)
+    scores = [0, 0]; // scores of both players to be 0
+    activePlayer = 0; // activePlayer to be the left player
+    roundScore = 0; // roundScore to be 0
+    gamePlaying = true; // gamePlaying to be happening (we set this because at some point we also want gamePlaying to be false)
     
     document.querySelector('.dice').style.display = 'none';
     document.getElementById('score-0').textContent = '0';
@@ -29,52 +28,51 @@ function init() {
 }
 
 
-//2. when we click button 'NEW GAME', we call the function "init"
+// 2. when we click button 'NEW GAME', we call the function "init"
 document.querySelector('.btn-new').addEventListener('click', init); 
 // $('.btn-new').addEventListener('click', init); //the jQuery way
- 
 
-//3. when we click button 'ROLL DICE'
+// 3. when we click button 'ROLL DICE'
 document.querySelector('.btn-roll').addEventListener('click', function() {
     if (gamePlaying) {
-        //1. we make rounded random number between 1 and 6
+        // we make rounded random number between 1 and 6
         var dice = Math.floor(Math.random() * 6) + 1; //for dice
 
-        //2. we display the dice + correct dice.png (****)
+        // we display the dice + correct dice.png (****)
         var diceDOM = document.querySelector('.dice');
-        diceDOM.style.display = 'block'; //the dice shows on the screen
-        diceDOM.src = 'images/dice-' + dice + '.png'; ///we're gonna see the dice that presents a random number (defined in 3.1.)
+        diceDOM.style.display = 'block'; // the dice shows on the screen
+        diceDOM.src = 'images/dice-' + dice + '.png'; /// we're gonna see the dice that presents a random number (defined in 3.1.)
 
-        //3. we update the round score IF the rolled number was NOT a 1 (if it was, we switch players)
+        // we update the round score IF the rolled number was NOT a 1 (if it was, we switch players)
         if (dice !== 1) {
-            roundScore = roundScore + dice; //add score (dice number) to roundScore
-            document.querySelector('#current-' + activePlayer).textContent = roundScore; //we select on which element we want to add score -- we set to '#current-'
+            roundScore = roundScore + dice; // add score (dice number) to roundScore
+            document.querySelector('#current-' + activePlayer).textContent = roundScore; // we select on which element we want to add score -- we set to '#current-'
         } else {
-            nextPlayer(); //we define this function later
+            nextPlayer(); // we define this function later
         }
     }    
 });
 
 
-//4. when we click button 'HOLD'
+// 4. when we click button 'HOLD'
 document.querySelector('.btn-hold').addEventListener('click', function() {
     if (gamePlaying) {
-        //1. we add current score to global score (**HARDER TO UNDERSTAND**)
-        scores[activePlayer] += roundScore; //the alternative: scores[activePlayer] = scores[activePlayer] + roundScore;
+        // we add current score to global score (**HARDER TO UNDERSTAND**)
+        scores[activePlayer] += roundScore; // the alternative: scores[activePlayer] = scores[activePlayer] + roundScore;
 
-        //2. we make updated score visible
+        // we make updated score visible
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-        //3. we check if player won the game or not and do some things if he/she did (not)
+        // we check if player won the game or not and do some things if he/she did (not)
         if (scores[activePlayer] >= 10) {
-            document.querySelector('#name-' + activePlayer).textContent = 'Winner!'; //write "winner" to the player who won
-            document.querySelector('.dice').style.display = 'none'; //hide dice
-            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner'); //add 'winner' css style
-            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active'); //remove red button that shows an active player
-            gamePlaying = false; //game ends
+            document.querySelector('#name-' + activePlayer).textContent = 'Winner!'; // write "winner" to the player who won
+            document.querySelector('.dice').style.display = 'none'; // hide dice
+            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner'); // add 'winner' css style
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active'); // remove red button that shows an active player
+            gamePlaying = false; // game ends
             
         } else {
-            nextPlayer();  //we define this function later
+            nextPlayer();  // we define this function later
         }
     }
 });

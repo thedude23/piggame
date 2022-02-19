@@ -4,10 +4,8 @@
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
         <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link type="text/css" rel="stylesheet" href="style.css">
-
         <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -37,24 +35,30 @@
 
         <!-- GAME RULES for game 2 -->
         <div class="container">
-                <p style="text-align: center">
-                    <a class="btn btn-danger col-sm-4" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><b>GAME RULES</b></a>
-                </p>
+            <p style="text-align: center">
+                <a class="btn btn-danger col-sm-4" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><b>GAME RULES</b></a>
+            </p>
                 
-                <div class="row">
-                    <div class="col">
-                      <div class="collapse multi-collapse" id="multiCollapseExample1">
-                        <div class="card card-body font-weight-bold">
-                                The game has 2 players, playing in rounds. In each turn, a player rolls dices as many times as he wishes. Each result gets added to his CURRENT score.
-                                But, if the player rolls a 1, all his ROUND score gets lost. And if he rolls two 6's in a row, he looses his ENTIRE score. In each way, after that, it's the next player's turn.
-                                The player can also always choose to HOLD, which means that his CURRENT score gets added to his GLOBAL score but it's the next player's turn.
-                                The first player to reach 50 points on GLOBAL score wins the game (you can change the score to whichever you wish in the bracket 'FINAL SCORE' bellow).
-                        </div>
-                      </div>
+            <div class="row">
+                <div class="col">
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body font-weight-bold" style="z-index: 1000;">
+                        <ul>
+                            <li>The game has 2 players, playing in rounds. In each turn, a player rolls dices as many times as he wishes.</li>
+                            <li>Each result gets added to his CURRENT score.</li>
+                                <ul>
+                                    <li>But, If the player rolls 1, all his ROUND score gets lost.</li>
+                                    <li>If he rolls two 6's in a row, he looses his ENTIRE score.</li>
+                                    <li>In each way, after that, it's the next player's turn.</li>
+                                </ul>
+                            <li>The player can also always choose to HOLD, which means that his CURRENT score gets added to his GLOBAL score, but it's the next player's turn.</li>
+                            <li>The first player to reach 50 points on GLOBAL score wins the game -- you can also change the score to whichever you wish in the bracket 'FINAL SCORE' bellow.</li>
+                        </ul>
+                    </div>
                     </div>
                 </div>
+            </div>
         </div>
-
 
         <body style="background-image: url(images/back3.jpg)">
 
@@ -63,7 +67,6 @@
         <br>
 
         <div class="wrapper clearfix">
-
             <div class="player-0-panel active">
                 <div class="player-name" id="name-0">Player 1</div>
                 <div class="player-score" id="score-0">0</div>
@@ -96,8 +99,6 @@
 
         </div>
         <!-- /. wrapper clearfix -->
-
-
     </body>
 
 
