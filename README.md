@@ -1,2 +1,3 @@
 # piggame
-Pig game, made in JS
+
+Pig game in Javascript.
